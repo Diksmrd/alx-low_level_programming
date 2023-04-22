@@ -1,11 +1,24 @@
 #include <stdio.h>
-#include <unistd.h>
-/**
- * main - Entry point
- * Return: Always 0 (Success)
- */
+#include <stdlib.h>
+#include <time.h>
 int main(void)
 {
-puts("\"Programming is like building a multilingual puzzle");
+int n;
+srand(time(0));
+n = rand() % 201 - 100;
+printf("%d\n", n);
+if (n > 0)
+{
+printf("is positive\n");
+} 
+else if (n == 0) 
+{
+printf("is zero\n");
+} 
+else 
+{
+printf("is negative\n");
+}
+printf("\n");
 return (0);
 }
