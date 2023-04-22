@@ -4,19 +4,20 @@
  *
  * Return: Always 0 (Success)
  */
-int main(void)
+int main(void) 
 {
 int lowerCase = 'a';
-int upperCase = 'A';
 while (lowerCase <= 'z')
+{
+if (lowerCase == 'e' || lowerCase == 'q')
+{
+lowerCase += 1;
+}
+else
 {
 putchar (lowerCase);
 lowerCase += 1;
 }
-while (upperCase <= 'Z')
-{
-putchar (upperCase);
-upperCase += 1;
 }
 putchar('\n');
 return (0);
