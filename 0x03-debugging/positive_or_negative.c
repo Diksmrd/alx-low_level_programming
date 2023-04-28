@@ -1,9 +1,8 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 /**
- * positive_or_negative - Determine if a random number is
- *positive, negative or zero.
- * @i: The integer number to check.
+ * positive_or_negative - Determine if a number is positive or negative
+ * @i: integer to be checked
  *
  * Return: void
  */
