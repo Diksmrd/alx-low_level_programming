@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 
 /**
  *main - entry point
@@ -8,6 +7,7 @@
  *and FizzBuzz for multiples of both
  *Return: Always 0
  */
+
 int main(void)
 {
 int i;
