@@ -2,39 +2,51 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 10
-
 /**
- *main - generates random valid password for the
- * program 101-crack me.
- *return: 0 (Success)
+ * main - generates random valid password for the program 101-crack me.
+ * Return: 0 (Success)
  */
-
 int main(void)
 {
-char password[PASSWORD_LENGTH + 1];
-int i, r;
+char password[84];
+int index = 0, sum = 0, diff_half1, diff_half2;
 
-srand(time(NULL));
+srand(time(0));
 
-for (i = 0; i < PASSWORD_LENGTH; i++)
+while (sum < 2772)
 {
-r = rand() % 62;
-if (r < 26)
-{
-password[i] = 'a' + r;
+password[index] = 33 + rand() % 94;
+sum += password[index++];
 }
-else if (r < 52)
+password[index] = '\0';
+
+if (sum != 2772)
 {
-password[i] = 'A' + (r - 26);
-}
-else
+diff_half1 = (sum - 2772) / 2;
+diff_half2 = (sum - 2772) / 2;
+
+if ((sum - 2772) % 2 != 0)
+diff_half1++;
+
+for (index = 0; password[index]; index++)
 {
-password[i] = '0' + (r - 52);
+if (password[index] >= (33 + diff_half1))
+{
+password[index] -= diff_half1;
+break;
 }
 }
 
-password[PASSWORD_LENGTH] = '\0';
-printf("%s\n", password);
+for (index = 0; password[index]; index++)
+{
+if (password[index] >= (33 + diff_half2))
+{
+password[index] -= diff_half2;
+break;
+}
+}
+}
+
+printf("%s", password);
 return (0);
 }
