@@ -1,22 +1,31 @@
-#include <stdio.h>
 #include "main.h"
+#include <stdio.h>
 
 /**
- * print_array - Prints `n` elements of an array of integers,
- * followed by a new line.
- *
- * @a: Pointer to the array of integers.
- * @n: Number of elements to be printed.
+ * _strcpy - copy a string
+ *@dest: destination
+ *@src: source value
+ * Return: the pointer to dest
  */
-void print_array(int *a, int n)
-{
-int i;
 
-for (i = 0; i < n; i++)
+int _atoi(char *s)
 {
-printf("%d", a[i]);
-if (i < n - 1)
-printf(", ");
+int result = 0;
+int sign = 1;
+int i = 0;
+
+while (*(s + i) < '0' || *(s + i) > '9')
+{
+if (*(s + i) == '-')
+{
+sign *= -1;
 }
-printf("\n");
+i++;
+}
+while (*(s + i) >= '0' && *(s + i) <= '9')
+{
+result = result *10 + (*(s + i) -'0');
+i++;
+}
+return (sign *result);
 }
