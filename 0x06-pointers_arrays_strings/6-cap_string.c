@@ -1,22 +1,31 @@
 #include "main.h"
-#include <ctype.h>
 
 /**
- * cap_string - capitalizes all words of a string
- * @str: the input string
+ * cap_string - Capitalizes all words of a string
+ * @s: The input string
  *
- * Return: pointer to the resulting string
+ * Return: The modified string
  */
-
-char *cap_string(char *str)
+char *cap_string(char *s)
 {
-char *p = str;
+int i = 0;
 
-while (*p)
+while (s[i])
 {
-if (p == str || isspace((unsigned char)*(p - 1)) || ispunct((unsigned char)*(p - 1)))
-*p = toupper((unsigned char)*p);
-p++;
+if (s[i] >= 'a' && s[i] <= 'z')
+{
+if (i == 0 || s[i - 1] == ' ' || s[i - 1] == '\t'
+|| s[i - 1] == '\n' || s[i - 1] == ','
+|| s[i - 1] == ';' || s[i - 1] == '.'
+|| s[i - 1] == '!' || s[i - 1] == '?'
+|| s[i - 1] == '"' || s[i - 1] == '('
+|| s[i - 1] == ')' || s[i - 1] == '{'
+|| s[i - 1] == '}')
+{
+s[i] -= 32;
 }
-return (str);
+}
+i++;
+}
+return (s);
 }
