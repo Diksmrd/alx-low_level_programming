@@ -1,54 +1,55 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <ctype.h>
 /**
- * infinite_add - function that adds two numbers
- * @n1: The first number to add
- * @n2: The second number to add
- * @r: The buffer that stores the result
- * @size_r: The size of the buffer
+ * print_buffer - function that prints a buffer
+ * @b: buffer
+ * @size: size of buffer
  *
- * Return: Pointer to r if the sum can be stored in r,
- * otherwise return 0.
+ * Return: void
  */
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
-{
-int len1 = strlen(n1);
-int len2 = strlen(n2);
-int len = len1 > len2 ? len1 : len2;
-int carry = 0;
-int sum, i;
 
-if (len + 1 > size_r)
+void print_buffer(char *b, int size)
 {
-return (0);
-}
-
-r[len] = '\0';
-
-for (i = 0; i < len; i++)
+int i, j;
+if (size <= 0)
 {
-sum = carry;
-if (i < len1)
+putchar('\n');
+return;
+}
+for (i = 0; i < size; i += 10)
 {
-sum += n1[len1-1-i] - '0';
-}
-if (i < len2)
+printf("%08x ", i);
+for (j = i; j < i + 10; j++)
 {
-sum += n2[len2-1-i] - '0';
-}
-carry = sum / 10;
-r[len-1-i] = sum % 10 + '0';
-}
-
-if (carry != 0)
+if (j < size)
 {
-if (len+1 > size_r)
+printf("%02x ", (unsigned char) b[j]);
+}
+else
 {
-return (0);
+printf("   ");
 }
-r[0] = carry + '0';
-return (r);
 }
-
-return (r);
+printf(" ");
+for (j = i; j < i + 10; j++)
+{
+if (j < size)
+{
+if (isprint((int) b[j]))
+{
+putchar(b[j]);
+}
+else
+{
+putchar('.');
+}
+}
+else
+{
+break;
+}
+}
+putchar('\n');
+}
 }
