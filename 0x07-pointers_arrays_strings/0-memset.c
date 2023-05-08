@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
 * _memset - fill a block of memory with a specific value
@@ -20,10 +19,4 @@ s[i] = b;
 n--;
 }
 return (s);
-}
-
-int main(void)
-{
-/* code using _memset goes here */
-return (0);
 }
